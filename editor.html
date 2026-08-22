@@ -8,12 +8,15 @@
   <meta name="description" content="About My OC 的本機內容編輯器">
   <title>OC 網站編輯器</title>
   <script>
-    try { localStorage.setItem("about-my-oc-owner-mode", "1"); } catch { /* 無法使用儲存空間時忽略 */ }
+    (() => {
+      try { localStorage.setItem("about-my-oc-owner-mode", "1"); } catch { /* 無法使用儲存空間時忽略 */ }
+      const suffix = window.location.protocol === "file:" ? "" : "?v=20260822-editor-v3";
+      document.write(`<link rel="stylesheet" href="style.css${suffix}">`);
+      document.write(`<link rel="stylesheet" href="editor.css${suffix}">`);
+      document.write(`<script defer src="data.js${suffix}"><\/script>`);
+      document.write(`<script defer src="editor.js${suffix}"><\/script>`);
+    })();
   </script>
-  <link rel="stylesheet" href="style.css?v=20260822-editor-v2">
-  <link rel="stylesheet" href="editor.css?v=20260822-editor-v2">
-  <script defer src="data.js?v=20260822-editor-v2"></script>
-  <script defer src="editor.js?v=20260822-editor-v2"></script>
 </head>
 <body class="editor-body" data-theme="archive">
   <header class="editor-topbar">
