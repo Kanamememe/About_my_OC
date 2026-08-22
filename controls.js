@@ -4,6 +4,9 @@
   const headerActions = document.querySelector(".header-actions");
   if (!headerActions) return;
 
+  let ownerMode = false;
+  try { ownerMode = localStorage.getItem("about-my-oc-owner-mode") === "1"; } catch { /* ignore */ }
+
   const controls = document.createElement("div");
   controls.className = "public-controls";
   controls.setAttribute("aria-label", "公開瀏覽工具");
@@ -12,6 +15,7 @@
       <span class="readonly-dot" aria-hidden="true"></span>
       公開瀏覽
     </span>
+    ${ownerMode ? '<button class="public-action-button" id="edit-content-button" type="button">編輯內容</button>' : ""}
     <button class="public-action-button" id="share-page-button" type="button">分享此頁</button>
     <button class="public-action-button" id="force-update-button" type="button">強制更新</button>
   `;
@@ -23,6 +27,7 @@
   toast.setAttribute("aria-live", "polite");
   document.body.append(toast);
 
+  const editButton = document.getElementById("edit-content-button");
   const shareButton = document.getElementById("share-page-button");
   const updateButton = document.getElementById("force-update-button");
   let toastTimer = 0;
@@ -37,9 +42,13 @@
 
   function cleanPublicUrl() {
     const url = new URL(window.location.href);
-    ["refresh", "update", "cache", "v", "_"].forEach((key) => url.searchParams.delete(key));
+    ["refresh", "update", "cache", "v", "_", "owner"].forEach((key) => url.searchParams.delete(key));
     return url;
   }
+
+  editButton?.addEventListener("click", () => {
+    window.location.href = "editor.html";
+  });
 
   async function copyText(text) {
     if (window.isSecureContext && navigator.clipboard?.writeText) {
