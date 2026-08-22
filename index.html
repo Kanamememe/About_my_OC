@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111418">
+  <meta name="description" content="可重複使用的 OC 世界觀與角色介紹網站模板">
+  <title>OC 檔案館</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="data.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body data-theme="archive">
+  <a class="skip-link" href="#app">跳到主要內容</a>
+
+  <div class="ambient" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <header class="site-header">
+    <a class="site-brand" href="#/" data-route aria-label="回到首頁">
+      <span class="brand-mark" id="brand-mark">OC</span>
+      <span class="brand-copy">
+        <strong id="site-title">OC 檔案館</strong>
+        <small id="site-tagline">Worlds, Characters & IF Lines</small>
+      </span>
+    </a>
+
+    <div class="header-actions">
+      <label class="theme-control">
+        <span>頁面風格</span>
+        <select id="theme-select" aria-label="選擇頁面風格">
+          <option value="auto">跟隨世界</option>
+          <option value="archive">檔案館</option>
+          <option value="ancient">古風</option>
+          <option value="cyber">科技風</option>
+          <option value="zombie">喪屍風</option>
+          <option value="fantasy">西幻風</option>
+          <option value="school">校園風</option>
+        </select>
+      </label>
+    </div>
+  </header>
+
+  <main id="app" class="app-shell" aria-live="polite"></main>
+
+  <footer class="site-footer">
+    <p id="footer-text">以純 HTML、CSS、JavaScript 製作。</p>
+  </footer>
+
+  <noscript>
+    <p class="noscript-message">這個網站需要啟用 JavaScript 才能顯示角色資料。</p>
+  </noscript>
+</body>
+</html>
