@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111418">
+  <meta name="description" content="使用 About My OC 模板建立自己的公開 OC 網站">
+  <title>建立自己的 OC 網站</title>
+  <link rel="stylesheet" href="style.css?v=20260822-template-v1">
+  <link rel="stylesheet" href="template.css?v=20260822-template-v1">
+</head>
+<body class="template-start-body" data-theme="archive">
+  <div class="ambient" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <main class="template-start-shell">
+    <nav class="template-start-nav" aria-label="頁面導覽">
+      <a href="index.html#/">← 返回 OC 網站</a>
+      <a href="https://github.com/Kanamememe/About_my_OC" target="_blank" rel="noopener noreferrer">查看原始模板 ↗</a>
+    </nav>
+
+    <section class="template-start-hero panel">
+      <div>
+        <p class="eyebrow">ABOUT MY OC TEMPLATE</p>
+        <h1>建立自己的 OC 網站</h1>
+        <p class="lead">複製一份空白模板後，你會擁有自己的 repository、網頁編輯器、OC 資料與公開網址。每個人的網站彼此獨立，不會覆蓋其他人的內容。</p>
+        <div class="template-start-actions">
+          <a class="template-button primary" id="use-template-link" href="https://github.com/Kanamememe/About_my_OC/generate" target="_blank" rel="noopener noreferrer">使用模板建立</a>
+          <a class="template-button" href="https://github.com/Kanamememe/About_my_OC/fork" target="_blank" rel="noopener noreferrer">改用 Fork</a>
+        </div>
+        <div class="template-status" id="template-status" role="status">正在確認模板是否已啟用……</div>
+      </div>
+      <div class="template-start-symbol" aria-hidden="true"><span>OC</span></div>
+    </section>
+
+    <section class="template-step-grid" aria-label="建立步驟">
+      <article class="template-step panel">
+        <span class="template-step-number">1</span>
+        <h2>建立自己的 repository</h2>
+        <p>登入 GitHub 後按「使用模板建立」，設定自己的 repository 名稱。無法使用模板按鈕時，可以先改用 Fork。</p>
+      </article>
+      <article class="template-step panel">
+        <span class="template-step-number">2</span>
+        <h2>開啟 GitHub Pages</h2>
+        <p>到新 repository 的 Settings → Pages，選擇 Deploy from a branch、main 和 / (root)。</p>
+      </article>
+      <article class="template-step panel">
+        <span class="template-step-number">3</span>
+        <h2>打開自己的編輯器</h2>
+        <p>在自己的公開網址後加上 <code>editor.html</code>，便能用表單建立世界、角色與 IF 線。</p>
+      </article>
+      <article class="template-step panel">
+        <span class="template-step-number">4</span>
+        <h2>發布並分享</h2>
+        <p>在編輯器按「複製並打開 GitHub」提交 data.js。公開頁面只供觀看，訪客不能修改你的原網站。</p>
+      </article>
+    </section>
+
+    <section class="template-note panel">
+      <p class="eyebrow">INDEPENDENT SITES</p>
+      <h2>多人公開，但資料不混在一起</h2>
+      <p>每位創作者都從模板建立自己的 repository，因此每個人都有獨立權限、圖片、內容與網址。分享時只需要傳送自己的 GitHub Pages 網址，不需要把觀看者加入 Collaborators。</p>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      const status = document.getElementById("template-status");
+      const templateLink = document.getElementById("use-template-link");
+
+      fetch("https://api.github.com/repos/Kanamememe/About_my_OC", { cache: "no-store" })
+        .then((response) => {
+          if (!response.ok) throw new Error("status-check-failed");
+          return response.json();
+        })
+        .then((repository) => {
+          if (repository.is_template) {
+            status.dataset.state = "ready";
+            status.textContent = "模板已啟用，可以直接按「使用模板建立」。";
+            return;
+          }
+
+          status.dataset.state = "warning";
+          status.textContent = "模板功能尚未在 GitHub 設定中啟用。現在可先使用 Fork；擁有者啟用 Template repository 後，第一個按鈕就能使用。";
+          templateLink.setAttribute("aria-disabled", "true");
+        })
+        .catch(() => {
+          status.textContent = "無法確認模板狀態。可以嘗試使用模板按鈕，或改用 Fork。";
+        });
+    })();
+  </script>
+</body>
+</html>
