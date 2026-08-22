@@ -20,12 +20,16 @@ jobs:
           node --check app.js
           node --check controls.js
           node --check editor.js
+          node --check template.js
           node --check data.js
 
       - name: Confirm required files exist
         run: |
           test -f index.html
+          test -f start.html
           test -f editor.html
           test -f style.css
+          test -f controls.css
+          test -f template.css
           test -f editor.css
           test -f data.js
