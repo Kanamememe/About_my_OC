@@ -13,14 +13,16 @@
     (() => {
       const isLocalFile = window.location.protocol === "file:";
       const refreshVersion = new URLSearchParams(window.location.search).get("refresh");
-      const assetVersion = refreshVersion || "20260822-public-v2";
+      const assetVersion = refreshVersion || "20260822-public-v3";
       const suffix = isLocalFile ? "" : `?v=${encodeURIComponent(assetVersion)}`;
 
       document.write(`<link rel="stylesheet" href="style.css${suffix}">`);
       document.write(`<link rel="stylesheet" href="controls.css${suffix}">`);
+      document.write(`<link rel="stylesheet" href="template.css${suffix}">`);
       document.write(`<script defer src="data.js${suffix}"><\/script>`);
       document.write(`<script defer src="app.js${suffix}"><\/script>`);
       document.write(`<script defer src="controls.js${suffix}"><\/script>`);
+      document.write(`<script defer src="template.js${suffix}"><\/script>`);
     })();
   </script>
 </head>
