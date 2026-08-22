@@ -1,6 +1,13 @@
-# About My OC — 簡易版模板
+# About My OC — 簡易版空白模板
 
-一個不需要安裝套件、可直接使用 GitHub Pages 發布的 OC 世界觀與角色介紹網站。
+一個不需要安裝套件、可直接離線開啟，也能使用 GitHub Pages 發布的 OC 世界觀與角色介紹網站。
+
+此版本預設為完全空白：
+
+- 沒有預設世界
+- 沒有預設角色
+- 沒有預設 IF 線
+- 由使用者自行編輯 `data.js` 建立內容
 
 ## 目前功能
 
@@ -16,6 +23,19 @@
 - 記住訪客上次選擇的頁面風格
 - 圖片尚未加入時會顯示姓名占位，不會出現破圖
 
+## 離線使用
+
+這個網站只使用本機的 HTML、CSS、JavaScript 和圖片，不依賴資料庫、CDN 或外部套件。
+
+1. 在 GitHub repository 按下 **Code → Download ZIP**。
+2. 解壓縮下載的 ZIP。
+3. 打開資料夾中的 `index.html`。
+4. 網站就能在沒有網路的情況下使用。
+
+離線使用時，世界封面與角色圖片也要放在 `assets` 資料夾，並使用相對路徑。不要把圖片資料填成網路網址，否則離線時無法載入。
+
+GitHub Pages 的公開網址本身仍需要網路才能首次載入；下載到裝置中的網站檔案則可以直接離線使用。
+
 ## 檔案結構
 
 ```text
@@ -30,19 +50,25 @@ About_my_OC/
 
 一般使用時，主要修改 `data.js` 並把圖片放入 `assets`；不需要為每名角色另外建立 HTML。
 
-## 開啟 GitHub Pages
+## 目前的空白資料
 
-1. 進入此 repository 的 **Settings**。
-2. 在左側選擇 **Pages**。
-3. `Build and deployment` 的 Source 選擇 **Deploy from a branch**。
-4. Branch 選擇 `main`，資料夾選擇 `/ (root)`。
-5. 按下 **Save**。
+`data.js` 預設只有網站名稱和一個空的世界陣列：
 
-發布後的網址通常是：
-
-```text
-https://kanamememe.github.io/About_my_OC/
+```js
+window.OC_SITE_DATA = {
+  site: {
+    title: "我的 OC 檔案館",
+    tagline: "Worlds, Characters & IF Lines",
+    mark: "OC",
+    introTitle: "開始建立你的世界",
+    introText: "目前尚未建立任何世界。",
+    footer: "About My OC"
+  },
+  worlds: []
+};
 ```
+
+你的第一個世界要放在 `worlds: []` 的中括號裡。
 
 ## 修改網站名稱
 
@@ -59,25 +85,27 @@ site: {
 }
 ```
 
-## 新增世界
+## 新增第一個世界
 
-在 `data.js` 的 `worlds` 陣列內複製一個完整世界物件：
+把下面的世界物件放進 `data.js` 的 `worlds: []`：
 
 ```js
-{
-  id: "my-world",
-  name: "世界名稱",
-  subtitle: "MY WORLD",
-  theme: "fantasy",
-  symbol: "界",
-  cover: "assets/worlds/my-world-cover.webp",
-  description: "世界簡介。",
-  facts: [
-    { label: "世界類型", value: "西幻" },
-    { label: "主要地點", value: "王都" }
-  ],
-  characters: []
-}
+worlds: [
+  {
+    id: "my-world",
+    name: "世界名稱",
+    subtitle: "MY WORLD",
+    theme: "fantasy",
+    symbol: "界",
+    cover: "assets/worlds/my-world-cover.webp",
+    description: "世界簡介。",
+    facts: [
+      { label: "世界類型", value: "西幻" },
+      { label: "主要地點", value: "王都" }
+    ],
+    characters: []
+  }
+]
 ```
 
 可使用的 `theme`：
@@ -183,6 +211,20 @@ image: "assets/characters/character-main.webp"
 ```
 
 GitHub Pages 會區分檔名大小寫，`Photo.webp` 與 `photo.webp` 會被視為不同檔案。
+
+## 開啟 GitHub Pages
+
+1. 進入此 repository 的 **Settings**。
+2. 在左側選擇 **Pages**。
+3. `Build and deployment` 的 Source 選擇 **Deploy from a branch**。
+4. Branch 選擇 `main`，資料夾選擇 `/ (root)`。
+5. 按下 **Save**。
+
+發布後的網址通常是：
+
+```text
+https://kanamememe.github.io/About_my_OC/
+```
 
 ## 分享給其他人使用
 
