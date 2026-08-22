@@ -9,11 +9,22 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>OC 檔案館</title>
-  <link rel="stylesheet" href="style.css?v=20260822-empty">
-  <script defer src="data.js?v=20260822-empty"></script>
-  <script defer src="app.js?v=20260822-empty"></script>
+  <script>
+    (() => {
+      const isLocalFile = window.location.protocol === "file:";
+      const refreshVersion = new URLSearchParams(window.location.search).get("refresh");
+      const assetVersion = refreshVersion || "20260822-public-v1";
+      const suffix = isLocalFile ? "" : `?v=${encodeURIComponent(assetVersion)}`;
+
+      document.write(`<link rel="stylesheet" href="style.css${suffix}">`);
+      document.write(`<link rel="stylesheet" href="controls.css${suffix}">`);
+      document.write(`<script defer src="data.js${suffix}"><\/script>`);
+      document.write(`<script defer src="app.js${suffix}"><\/script>`);
+      document.write(`<script defer src="controls.js${suffix}"><\/script>`);
+    })();
+  </script>
 </head>
-<body data-theme="archive">
+<body data-theme="archive" data-public-view="true">
   <a class="skip-link" href="#app">跳到主要內容</a>
 
   <div class="ambient" aria-hidden="true">
