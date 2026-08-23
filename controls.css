@@ -1,3 +1,11 @@
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .public-controls {
   display: flex;
   align-items: center;
@@ -108,18 +116,13 @@
   }
 
   .header-actions {
-    display: flex;
     flex: 1 1 auto;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 10px;
   }
 }
 
 @media (max-width: 760px) {
   .header-actions {
     width: 100%;
-    flex-wrap: wrap;
   }
 
   .public-controls {
