@@ -6,11 +6,17 @@
   <meta name="theme-color" content="#111418">
   <meta name="robots" content="noindex,nofollow">
   <meta name="description" content="About My OC 的本機內容編輯器">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>OC 網站編輯器</title>
   <script>
     (() => {
       try { localStorage.setItem("about-my-oc-owner-mode", "1"); } catch { /* 無法使用儲存空間時忽略 */ }
-      const suffix = window.location.protocol === "file:" ? "" : "?v=20260824-editor-v4";
+      const isLocalFile = window.location.protocol === "file:";
+      const refreshVersion = new URLSearchParams(window.location.search).get("refresh");
+      const assetVersion = refreshVersion || "20260824-editor-v5";
+      const suffix = isLocalFile ? "" : `?v=${encodeURIComponent(assetVersion)}`;
       document.write(`<link rel="stylesheet" href="style.css${suffix}">`);
       document.write(`<link rel="stylesheet" href="editor.css${suffix}">`);
       document.write(`<link rel="stylesheet" href="image-upload.css${suffix}">`);
