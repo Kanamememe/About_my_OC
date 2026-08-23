@@ -15,7 +15,7 @@
       try { localStorage.setItem("about-my-oc-owner-mode", "1"); } catch { /* 無法使用儲存空間時忽略 */ }
       const isLocalFile = window.location.protocol === "file:";
       const refreshVersion = new URLSearchParams(window.location.search).get("refresh");
-      const assetVersion = refreshVersion || "20260824-editor-v5";
+      const assetVersion = refreshVersion || "20260824-editor-v6";
       const suffix = isLocalFile ? "" : `?v=${encodeURIComponent(assetVersion)}`;
       document.write(`<link rel="stylesheet" href="style.css${suffix}">`);
       document.write(`<link rel="stylesheet" href="editor.css${suffix}">`);
