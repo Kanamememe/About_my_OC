@@ -24,6 +24,28 @@
   pointer-events: none;
 }
 
+.editor-callout {
+  border-color: color-mix(in srgb, var(--accent) 58%, var(--line));
+  background:
+    radial-gradient(circle at 88% 18%, color-mix(in srgb, var(--accent) 28%, transparent), transparent 17rem),
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 16%, var(--surface)), var(--surface));
+  box-shadow: 0 22px 65px color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+.editor-callout::after {
+  content: "+";
+  right: 6%;
+  bottom: -4.2rem;
+  font-size: clamp(13rem, 28vw, 23rem);
+}
+
+.editor-main-button {
+  min-height: 54px;
+  padding: 13px 22px;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
 .template-callout-copy,
 .template-callout-actions {
   position: relative;
@@ -232,6 +254,10 @@
 
   .template-button {
     flex: 1 1 180px;
+  }
+
+  .editor-main-button {
+    width: 100%;
   }
 
   .template-step-grid {
