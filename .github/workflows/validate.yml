@@ -20,6 +20,7 @@ jobs:
           node --check app.js
           node --check controls.js
           node --check editor.js
+          node --check image-upload.js
           node --check template.js
           node --check data.js
 
@@ -32,4 +33,5 @@ jobs:
           test -f controls.css
           test -f template.css
           test -f editor.css
+          test -f image-upload.css
           test -f data.js
