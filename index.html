@@ -13,7 +13,7 @@
     (() => {
       const isLocalFile = window.location.protocol === "file:";
       const refreshVersion = new URLSearchParams(window.location.search).get("refresh");
-      const assetVersion = refreshVersion || "20260822-public-v6";
+      const assetVersion = refreshVersion || "20260823-public-v7";
       const suffix = isLocalFile ? "" : `?v=${encodeURIComponent(assetVersion)}`;
 
       document.write(`<link rel="stylesheet" href="style.css${suffix}">`);
@@ -45,9 +45,9 @@
     </a>
 
     <div class="header-actions">
-      <a class="public-action-button" id="edit-content-button" href="editor.html"
-        title="開啟網頁編輯器。修改會先保存在這個瀏覽器，發布仍需 GitHub 權限。">
-        編輯內容
+      <a class="public-action-button editor-entry-button" id="edit-content-button" href="editor.html"
+        title="在網頁表單中新增、編輯或刪除世界、角色與 IF 線">
+        ＋ 編輯／建立世界
       </a>
 
       <label class="theme-control">
