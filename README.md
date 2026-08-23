@@ -14,11 +14,19 @@
 
 ### 1. 打開網頁編輯器
 
+公開首頁右上角固定有：
+
+```text
+＋ 編輯／建立世界
+```
+
+也可以直接打開：
+
 ```text
 https://kanamememe.github.io/About_my_OC/editor.html
 ```
 
-第一次打開編輯器後，這台裝置的公開網站右上角會多出 **編輯內容**。其他訪客的瀏覽器不會顯示這個按鈕。
+任何人都可以開啟編輯器建立自己瀏覽器中的草稿，但只有擁有 repository 寫入權限的人能把修改提交到公開網站。
 
 ### 2. 直接填寫表單
 
@@ -29,9 +37,11 @@ https://kanamememe.github.io/About_my_OC/editor.html
 - 選擇世界風格
 - 新增世界資料欄
 - 新增、複製、刪除角色
-- 填寫角色圖片、台詞、標籤、故事、基本資料與關係
+- 填寫角色台詞、標籤、故事、基本資料與關係
 - 新增、複製、刪除 IF 世界線
-- 填寫 IF 分歧點、身分、圖片與專屬資料
+- 填寫 IF 分歧點、身分與專屬資料
+- 從手機相簿或裝置檔案直接上傳世界封面、角色圖片與 IF 圖片
+- 自動壓縮圖片並內嵌到可發布資料中
 - 自動把草稿儲存在目前瀏覽器
 - 匯入先前由編輯器匯出的 `data.js`
 - 下載新的 `data.js`
@@ -89,29 +99,25 @@ https://kanamememe.github.io/About_my_OC/editor.html
 - 重要內容請定期按 **下載 data.js** 備份。
 - 發布完成後，可以按 **載入目前已發布內容**，重新以線上版本為基礎編輯。
 
-## 圖片
+## 直接上傳圖片
 
-圖片仍需先放進 repository 的 `assets` 資料夾，再於編輯器填寫相對路徑。
+世界封面、角色圖片與 IF 圖片都可以在編輯器內直接選擇：
 
-建議結構：
+1. 進入一個世界、角色或 IF 的編輯頁。
+2. 在圖片區按 **選擇圖片**。
+3. 從手機相簿或裝置檔案選取圖片。
+4. 編輯器會自動縮小尺寸、壓縮並顯示預覽。
+5. 發布 `data.js` 後，圖片會和角色資料一起顯示，不需要另外上傳到 `assets`。
 
-```text
-assets/
-├── worlds/
-│   └── my-world-cover.webp
-└── characters/
-    ├── character-main.webp
-    └── character-if.webp
-```
+支援一般瀏覽器可讀取的 PNG、JPG、WebP、GIF 等格式。GIF 會轉成靜態第一幀；HEIC 若無法讀取，請先轉成 JPG 或 PNG。SVG 暫不接受直接上傳。
 
-在表單中填入：
+直接上傳的圖片會內嵌在 `data.js`，因此圖片越多，檔案也會越大。編輯器會自動壓縮，但仍建議：
 
-```text
-assets/worlds/my-world-cover.webp
-assets/characters/character-main.webp
-```
+- 使用適合網頁展示的圖片，不要一次放入大量超高解析原圖。
+- 定期下載 `data.js` 備份。
+- 若看到「無法儲存草稿」，立刻下載目前的 `data.js`，避免關頁後遺失。
 
-圖片路徑與檔名會區分大小寫。`Photo.webp` 和 `photo.webp` 會被當作不同檔案。
+熟悉檔案管理的人仍可展開 **進階：改用圖片路徑或網址**，使用 `assets/...` 相對路徑。
 
 ## 離線使用
 
@@ -122,7 +128,7 @@ assets/characters/character-main.webp
 3. 打開 `index.html` 查看網站。
 4. 打開 `editor.html` 編輯內容。
 
-離線編輯器仍能建立草稿與下載 `data.js`。但離線狀態不能直接打開 GitHub 發布，也不會自動從 GitHub 取得新版資料。
+離線編輯器仍能建立草稿、直接選擇本機圖片與下載 `data.js`。但離線狀態不能直接打開 GitHub 發布，也不會自動從 GitHub 取得新版資料。
 
 部分 iPhone／iPad 的「檔案」預覽對多檔案 JavaScript 網站支援有限；使用 GitHub Pages 上的 `editor.html` 會比較穩定。
 
@@ -151,13 +157,15 @@ About_my_OC/
 ├── editor.html            網頁表單編輯器
 ├── style.css              公開網站排版與主題
 ├── editor.css             編輯器排版
+├── image-upload.css       圖片選擇與預覽排版
 ├── controls.css           分享與強制更新按鈕
 ├── app.js                 世界、角色與 IF 顯示系統
 ├── editor.js              表單編輯、草稿、匯入與匯出
-├── controls.js            分享、更新與本機擁有者入口
+├── image-upload.js        圖片讀取、壓縮與內嵌
+├── controls.js            分享與更新功能
 ├── data.js                真正發布的 OC 資料
 ├── SHARING.md             公開分享說明
-└── assets/                世界封面與角色圖片
+└── assets/                進階圖片路徑使用者的素材資料夾
 ```
 
 ## 自動檢查
