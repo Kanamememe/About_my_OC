@@ -10,11 +10,13 @@
   <script>
     (() => {
       try { localStorage.setItem("about-my-oc-owner-mode", "1"); } catch { /* 無法使用儲存空間時忽略 */ }
-      const suffix = window.location.protocol === "file:" ? "" : "?v=20260822-editor-v3";
+      const suffix = window.location.protocol === "file:" ? "" : "?v=20260824-editor-v4";
       document.write(`<link rel="stylesheet" href="style.css${suffix}">`);
       document.write(`<link rel="stylesheet" href="editor.css${suffix}">`);
+      document.write(`<link rel="stylesheet" href="image-upload.css${suffix}">`);
       document.write(`<script defer src="data.js${suffix}"><\/script>`);
       document.write(`<script defer src="editor.js${suffix}"><\/script>`);
+      document.write(`<script defer src="image-upload.js${suffix}"><\/script>`);
     })();
   </script>
 </head>
