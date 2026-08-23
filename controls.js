@@ -4,9 +4,6 @@
   const headerActions = document.querySelector(".header-actions");
   if (!headerActions) return;
 
-  let ownerMode = false;
-  try { ownerMode = localStorage.getItem("about-my-oc-owner-mode") === "1"; } catch { /* ignore */ }
-
   const controls = document.createElement("div");
   controls.className = "public-controls";
   controls.setAttribute("aria-label", "公開瀏覽工具");
@@ -15,10 +12,6 @@
       <span class="readonly-dot" aria-hidden="true"></span>
       公開頁面・唯讀
     </span>
-    <button class="public-action-button" id="edit-content-button" type="button"
-      title="開啟網頁編輯器。修改會先保存在這個瀏覽器，發布仍需 GitHub 權限。">
-      ${ownerMode ? "編輯內容" : "開啟編輯器"}
-    </button>
     <button class="public-action-button" id="share-page-button" type="button">分享此頁</button>
     <button class="public-action-button" id="force-update-button" type="button">強制更新</button>
   `;
@@ -51,7 +44,6 @@
 
   editButton?.addEventListener("click", () => {
     try { localStorage.setItem("about-my-oc-owner-mode", "1"); } catch { /* ignore */ }
-    window.location.href = "editor.html";
   });
 
   async function copyText(text) {
