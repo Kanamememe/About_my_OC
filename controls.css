@@ -34,9 +34,19 @@
 }
 
 .public-action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0 12px;
   cursor: pointer;
+  text-decoration: none;
   transition: transform .22s var(--ease), border-color .22s ease, background-color .22s ease;
+}
+
+#edit-content-button {
+  border-color: color-mix(in srgb, var(--accent) 52%, var(--line));
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface-strong));
+  font-weight: 750;
 }
 
 .public-action-button:hover {
@@ -131,8 +141,12 @@
     flex: 0 0 auto;
   }
 
+  #edit-content-button {
+    width: 100%;
+  }
+
   .theme-control {
-    grid-row: 2;
+    grid-row: auto;
   }
 }
 
