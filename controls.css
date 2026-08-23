@@ -51,16 +51,28 @@
   transition: transform .22s var(--ease), border-color .22s ease, background-color .22s ease;
 }
 
-#edit-content-button {
-  border-color: color-mix(in srgb, var(--accent) 52%, var(--line));
-  background: color-mix(in srgb, var(--accent) 12%, var(--surface-strong));
-  font-weight: 750;
+#edit-content-button,
+.editor-entry-button {
+  min-height: 44px;
+  padding-inline: 17px;
+  border-color: color-mix(in srgb, var(--accent) 78%, var(--line));
+  background: var(--accent);
+  color: var(--bg-deep);
+  box-shadow: 0 8px 26px color-mix(in srgb, var(--accent) 22%, transparent);
+  font-size: .85rem;
+  font-weight: 850;
+}
+
+#edit-content-button:hover,
+.editor-entry-button:hover {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 88%, white);
+  color: var(--bg-deep);
 }
 
 .public-action-button:hover {
   transform: translateY(-1px);
   border-color: color-mix(in srgb, var(--accent) 62%, var(--line));
-  background: color-mix(in srgb, var(--accent) 10%, var(--surface-strong));
 }
 
 .public-action-button:focus-visible {
@@ -132,6 +144,11 @@
   .public-action-button {
     flex: 1 1 0;
   }
+
+  #edit-content-button,
+  .editor-entry-button {
+    flex: 1 1 100%;
+  }
 }
 
 @media (max-width: 620px) {
@@ -144,7 +161,8 @@
     flex: 0 0 auto;
   }
 
-  #edit-content-button {
+  #edit-content-button,
+  .editor-entry-button {
     width: 100%;
   }
 
