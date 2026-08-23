@@ -1,0 +1,217 @@
+.editor-field.has-image-uploader {
+  gap: 9px;
+}
+
+.inline-image-uploader {
+  display: grid;
+  grid-template-columns: minmax(150px, 220px) minmax(0, 1fr);
+  gap: 16px;
+  align-items: stretch;
+  padding: 14px;
+  border: 1px dashed color-mix(in srgb, var(--accent) 42%, var(--line));
+  border-radius: 15px;
+  background: color-mix(in srgb, var(--accent) 5%, var(--soft));
+  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+
+.inline-image-uploader.is-dragging {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 13%, var(--surface));
+  transform: translateY(-1px);
+}
+
+.inline-image-uploader[data-processing="true"] {
+  opacity: .72;
+  cursor: wait;
+}
+
+.image-upload-preview-slot,
+.image-upload-preview {
+  min-width: 0;
+  min-height: 170px;
+}
+
+.image-upload-preview {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: linear-gradient(145deg, var(--surface-strong), var(--bg-deep));
+}
+
+.image-upload-preview img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 170px;
+  object-fit: cover;
+}
+
+.image-upload-empty {
+  display: grid;
+  min-height: 170px;
+  place-content: center;
+  gap: 7px;
+  padding: 18px;
+  color: var(--muted);
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 55%),
+    var(--surface-strong);
+}
+
+.image-upload-empty span {
+  color: var(--accent);
+  font-family: var(--display);
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.image-upload-empty small {
+  font-size: .72rem;
+}
+
+.image-upload-empty.is-error span {
+  color: #ef9c90;
+}
+
+.image-upload-controls {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 9px;
+}
+
+.image-upload-file-input {
+  position: fixed !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.image-upload-button {
+  min-height: 42px;
+  padding: 9px 15px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  color: var(--text);
+  background: var(--surface-strong);
+  cursor: pointer;
+  font: inherit;
+  font-size: .8rem;
+  font-weight: 750;
+}
+
+.image-upload-button.primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--bg-deep);
+}
+
+.image-upload-button.danger {
+  color: #ffd8d4;
+  border-color: rgba(214, 92, 75, .35);
+  background: rgba(162, 51, 43, .14);
+}
+
+.image-upload-button[hidden] {
+  display: none;
+}
+
+.image-upload-button:disabled {
+  cursor: wait;
+  opacity: .65;
+}
+
+.image-upload-status {
+  max-width: 520px;
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: .7rem;
+  line-height: 1.55;
+}
+
+.image-path-fallback {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--soft);
+}
+
+.image-path-fallback summary {
+  color: var(--muted);
+  cursor: pointer;
+  font-size: .72rem;
+  font-weight: 700;
+}
+
+.image-path-fallback[open] summary {
+  margin-bottom: 9px;
+}
+
+.image-path-fallback input {
+  width: 100%;
+  min-height: 43px;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  outline: none;
+  color: var(--text);
+  background: var(--surface-strong);
+  font: inherit;
+  font-size: .8rem;
+}
+
+.image-path-fallback input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+.image-path-fallback small {
+  display: block;
+  margin-top: 7px;
+  color: color-mix(in srgb, var(--muted) 75%, transparent);
+  font-size: .64rem;
+}
+
+@media (max-width: 720px) {
+  .inline-image-uploader {
+    grid-template-columns: 1fr;
+  }
+
+  .image-upload-preview-slot,
+  .image-upload-preview,
+  .image-upload-preview img,
+  .image-upload-empty {
+    min-height: 230px;
+  }
+
+  .image-upload-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+
+  .image-upload-button {
+    width: 100%;
+  }
+
+  .image-upload-status {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 440px) {
+  .image-upload-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .image-upload-status {
+    grid-column: auto;
+  }
+}
